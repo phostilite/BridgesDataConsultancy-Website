@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Consultation - Bridges DATA Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0066cc, #00ccff);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-item:hover::after {
+            width: 100%;
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0,  0px); }
+            50%  { transform: translate(0, 15px); }
+            100%   { transform: translate(0, -0px); }   
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="gradient-bg shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-white font-bold text-3xl">
+                        Bridges DATA Consultancy
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="{% url 'home' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Home</a>
+                        <a href="{% url 'services' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Services</a>
+                        <a href="#about" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">About</a>
+                        <a href="{% url 'contact' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
+                        <a href="{% url 'case_studies' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Case Studies</a>
+                        <a href="{% url 'blogs' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Blog</a>
+                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Carrers</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                Schedule a Consultation
+            </h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="md:flex md:space-x-8">
+                <!-- Left Column: Scheduling Form -->
+                <div class="md:w-1/2 bg-white shadow-lg rounded-lg p-6 animate-fade-in">
+                    <h2 class="text-2xl font-bold mb-6 text-gradient">Book Your Consultation</h2>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="block text-gray-700 font-bold mb-2">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="date" class="block text-gray-700 font-bold mb-2">Preferred Date</label>
+                            <input type="date" id="date" name="date" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="time" class="block text-gray-700 font-bold mb-2">Preferred Time</label>
+                            <input type="time" id="time" name="time" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-bold mb-2">Tell us about your data challenges</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                            Schedule Consultation
+                            <i class="fas fa-calendar-check ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Right Column: Information and Visuals -->
+                <div class="md:w-1/2 mt-8 md:mt-0">
+                    <!-- Why Choose Us -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 mb-8 animate-fade-in">
+                        <h2 class="text-2xl font-bold mb-4 text-gradient">Why Choose Bridges DATA Consultancy?</h2>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Expert team with years of industry experience</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Tailored solutions for your unique challenges</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Cutting-edge technology and methodologies</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span>Proven track record of success</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Success Metrics -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 mb-8 animate-fade-in">
+                        <h2 class="text-2xl font-bold mb-4 text-gradient">Our Impact</h2>
+                        <canvas id="successMetricsChart" width="400" height="200"></canvas>
+                    </div>
+
+                    <!-- Testimonial -->
+                    <div class="bg-white shadow-lg rounded-lg p-6 animate-fade-in">
+                        <h2 class="text-2xl font-bold mb-4 text-gradient">Client Testimonial</h2>
+                        <blockquote class="text-xl italic text-gray-800 mb-4">
+                            "Bridges DATA Consultancy's insights have been invaluable. Their expertise helped us achieve a 30% increase in operational efficiency."
+                        </blockquote>
+                        <p class="font-semibold text-gray-600">- Sarah Johnson, CTO of TechInnovate Inc.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Graphics -->
+            <div class="fixed bottom-10 right-10 z-10">
+                <img src="https://via.placeholder.com/150" alt="Data Analytics" class="w-32 h-32 object-cover rounded-full shadow-lg floating">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Bridges DATA Consultancy</h3>
+                    <p class="text-gray-400">Building bridges to data-driven success.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="{% url 'case_studies' %}" class="text-gray-400 hover:text-white">Case Studies</a></li>
+                        <li><a href="{% url 'blogs' %}" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">carrers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Data Strategy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Data Modernization</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">BI and Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">AI and Machine Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Business Use Case Solutioning</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <p class="text-gray-400 mb-2">123 Data Street, Analytics City, 12345</p>
+                    <p class="text-gray-400 mb-2">Phone: +1 (555) 123-4567</p>
+                    <p class="text-gray-400">Email: info@bridgesdata.com</p>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2023 Bridges DATA Consultancy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Success Metrics Chart
+        var ctx = document.getElementById('successMetricsChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Efficiency Increase', 'Cost Reduction', 'Revenue Growth', 'Customer Satisfaction'],
+                datasets: [{
+                    label: 'Impact Percentage',
+                    data: [0, 0, 0, 0],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                scales: {
+                y: {
+                beginAtZero: true,
+                max: 100
+                }
+                },
+                animation: {
+                duration: 2000,
+                easing: 'easeOutQuart'
+                }
+                }
+                });
+                // Animate chart on load
+    anime({
+        targets: chart.data.datasets[0].data,
+        easing: 'easeInOutQuad',
+        delay: anime.stagger(200),
+        duration: 2000,
+        loop: false,
+        update: function(anim) {
+            chart.update();
+        },
+        value: [30, 25, 20, 35]
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+</html>

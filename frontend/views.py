@@ -26,3 +26,33 @@ def services_view(request):
         return render(request, settings.SERVICES_TEMPLATE)
     except TemplateDoesNotExist:
         return HttpResponse("Services page template does not exist.", status=404)
+    
+def get_started_view(request):
+    try:
+        return render(request, settings.GET_STARTED_TEMPLATE)
+    except TemplateDoesNotExist:
+        return HttpResponse("Get Started page template does not exist.", status=404)
+    
+def carrers_view(request):
+    try:
+        return render(request, settings.CARRERS_TEMPLATE)
+    except TemplateDoesNotExist:
+        return HttpResponse("Carrers page template does not exist.", status=404)
+    
+def blogs_view(request):
+    try:
+        return render(request, settings.BLOGS_TEMPLATE)
+    except TemplateDoesNotExist:
+        return HttpResponse("Blogs page template does not exist.", status=404)
+    
+def case_studies_view(request):
+    try:
+        return render(request, settings.CASE_STUDIES_TEMPLATE)
+    except TemplateDoesNotExist:
+        return HttpResponse("Case Studies page template does not exist.", status=404)
+    
+def schedule_consultation_view(request):
+    try:
+        return render(request, settings.SCHEDULE_CONSULTATION_TEMPLATE)
+    except TemplateDoesNotExist:
+        return HttpResponse("Schedule Consultation page template does not exist.", status=404)

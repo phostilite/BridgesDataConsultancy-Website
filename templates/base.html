@@ -7,15 +7,23 @@
     <title>Bridges DATA Consultancy</title>
     <link rel="icon" href="{% static 'logo/favicon.ico' %}" type="image/x-icon">
     <link href="{% static 'dist/output.css' %}" rel="stylesheet" />
-    <link href="{% static 'dist/flowbite.css' %}" rel="stylesheet" />
     <link href="{% static 'dist/flowbite.min.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
 </head>
 <body>
     {% block content %}
     {% endblock %}
-    <script src="{% static 'dist/flowbite.js' %}" ></script>
-    <script src="{% static 'dist/flowbite.min.js' %}" ></script>
+    <script src="{% static 'dist/flowbite.min.js' %}"></script>
 </body>
 </html>

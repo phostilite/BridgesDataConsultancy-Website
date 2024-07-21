@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - Bridges DATA Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0066cc, #00ccff);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <nav class="gradient-bg shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-white font-bold text-3xl">
+                        Bridges DATA Consultancy
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Home</a>
+                        <a href="#" class="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Services</a>
+                        <a href="#" class="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">About</a>
+                        <a href="#" class="text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up">Get Started with Bridges DATA Consultancy</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up card-hover" style="animation-delay: 0.2s;">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Schedule a Consultation</h2>
+                <p class="text-gray-600 mb-6">Speak with our data experts to discuss your unique challenges and goals.</p>
+                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                    Book Now
+                    <i class="fas fa-calendar-check ml-2"></i>
+                </a>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up card-hover" style="animation-delay: 0.4s;">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Request a Demo</h2>
+                <p class="text-gray-600 mb-6">See our data solutions in action with a personalized demo tailored to your industry.</p>
+                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                    Get Demo
+                    <i class="fas fa-tv ml-2"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-16 animate-fade-in-up" style="animation-delay: 0.6s;">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Our Process</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl text-blue-600 mb-4 animate-float" style="animation-delay: 0.2s;">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Discover</h3>
+                    <p class="text-gray-600">Understand your data landscape and business objectives</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl text-blue-600 mb-4 animate-float" style="animation-delay: 0.4s;">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Analyze</h3>
+                    <p class="text-gray-600">Dive deep into your data to uncover insights and opportunities</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl text-blue-600 mb-4 animate-float" style="animation-delay: 0.6s;">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Implement</h3>
+                    <p class="text-gray-600">Deploy tailored data solutions to drive your business forward</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl text-blue-600 mb-4 animate-float" style="animation-delay: 0.8s;">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Optimize</h3>
+                    <p class="text-gray-600">Continuously refine and improve your data strategy</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up" style="animation-delay: 0.8s;">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Ready to Transform Your Data Strategy?</h2>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label for="company" class="block text-gray-700 font-bold mb-2">Company</label>
+                    <input type="text" id="company" name="company" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+                <div>
+                    <label for="industry" class="block text-gray-700 font-bold mb-2">Industry</label>
+                    <select id="industry" name="industry" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        <option value="">Select an industry</option>
+                        <option value="finance">Finance</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="retail">Retail</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="energy">Energy</option>
+                        <option value="telecom">Telecommunications</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2">
+                    <label for="message" class="block text-gray-700 font-bold mb-2">How can we help you?</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                </div>
+                <div class="md:col-span-2 text-center">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                        Start Your Data Journey
+                        <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2023 Bridges DATA Consultancy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+</html>

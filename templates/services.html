@@ -1,10 +1,401 @@
-{% extends './base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Bridges DATA Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-{% load static %}
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
 
-{% block content %}
-{% include './navbar.html' %}
+        .gradient-bg {
+            background: linear-gradient(135deg, #0066cc, #00ccff);
+        }
 
+        .text-gradient {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-{% include './footer.html' %}
-{% endblock %}
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-item:hover::after {
+            width: 100%;
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0,  0px); }
+            50%  { transform: translate(0, 15px); }
+            100%   { transform: translate(0, -0px); }   
+        }
+
+        .service-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .service-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="gradient-bg shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-white font-bold text-3xl">
+                        Bridges DATA Consultancy
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="{% url 'home' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Home</a>
+                        <a href="{% url 'services' %}" class="navbar-item text-lg font-medium px-3 py-2  text-yellow-300 border-b-2 border-yellow-300">Services</a>
+                        <a href="#" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">About</a>
+                        <a href="#" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
+                        <a href="{% url 'case_studies' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Case Studies</a>
+                        <a href="{% url 'blogs' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Blog</a>
+                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Carrers</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900">
+                Our Services
+            </h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <!-- Services Overview -->
+            <section class="mb-16 animate-fade-in">
+                <h2 class="text-3xl font-bold mb-8 text-gradient">Comprehensive Data Solutions</h2>
+                <p class="text-xl text-gray-700 mb-8">At Bridges DATA Consultancy, we offer a wide range of services to help your business harness the power of data. Our expert team uses cutting-edge technologies and methodologies to deliver tailored solutions that drive growth, efficiency, and innovation.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                        <i class="fas fa-chart-line text-4xl text-blue-500 mb-4 service-icon"></i>
+                        <h3 class="text-xl font-bold mb-2">Data Strategy</h3>
+                        <p class="text-gray-600">Develop a comprehensive data strategy aligned with your business goals.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                        <i class="fas fa-server text-4xl text-green-500 mb-4 service-icon"></i>
+                        <h3 class="text-xl font-bold mb-2">Data Modernization</h3>
+                        <p class="text-gray-600">Upgrade your data infrastructure for improved performance and scalability.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                        <i class="fas fa-chart-bar text-4xl text-purple-500 mb-4 service-icon"></i>
+                        <h3 class="text-xl font-bold mb-2">BI and Analytics</h3>
+                        <p class="text-gray-600">Transform raw data into actionable insights with advanced analytics tools.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                        <i class="fas fa-robot text-4xl text-red-500 mb-4 service-icon"></i>
+                        <h3 class="text-xl font-bold mb-2">AI and Machine Learning</h3>
+                        <p class="text-gray-600">Leverage AI and ML to automate processes and predict future trends.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                        <i class="fas fa-lightbulb text-4xl text-yellow-500 mb-4 service-icon"></i>
+                        <h3 class="text-xl font-bold mb-2">Business Use Case Solutioning</h3>
+                        <p class="text-gray-600">Develop custom solutions for your unique business challenges.</p>
+                    </div>
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                        <i class="fas fa-shield-alt text-4xl text-indigo-500 mb-4 service-icon"></i>
+                        <h3 class="text-xl font-bold mb-2">Data Governance & Security</h3>
+                        <p class="text-gray-600">Implement robust data governance and security measures.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Strategy Section -->
+            <section class="mb-16 animate-fade-in">
+                <h2 class="text-3xl font-bold mb-8 text-gradient">Data Strategy</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-lg text-gray-700 mb-4">Our data strategy service helps you create a roadmap for leveraging data as a strategic asset. We work closely with your team to:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Assess your current data landscape</li>
+                            <li>Identify key business objectives</li>
+                            <li>Develop a comprehensive data strategy</li>
+                            <li>Define data governance policies</li>
+                            <li>Create a roadmap for implementation</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <canvas id="dataStrategyChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Modernization Section -->
+            <section class="mb-16 animate-fade-in">
+                <h2 class="text-3xl font-bold mb-8 text-gradient">Data Modernization</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <img src="https://via.placeholder.com/500x300?text=Data+Modernization+Infographic" alt="Data Modernization Infographic" class="w-full h-auto rounded-lg">
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-700 mb-4">Our data modernization services help you upgrade your data infrastructure to meet the demands of today's data-driven world. We offer:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Cloud migration and optimization</li>
+                            <li>Data lake and data warehouse implementation</li>
+                            <li>Real-time data processing solutions</li>
+                            <li>Legacy system modernization</li>
+                            <li>Data integration and ETL processes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BI and Analytics Section -->
+            <section class="mb-16 animate-fade-in">
+                <h2 class="text-3xl font-bold mb-8 text-gradient">BI and Analytics</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-lg text-gray-700 mb-4">Transform your data into actionable insights with our BI and Analytics services. We help you:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Design and implement BI dashboards</li>
+                            <li>Develop custom analytics solutions</li>
+                            <li>Perform advanced data analysis</li>
+                            <li>Create predictive models</li>
+                            <li>Implement self-service BI tools</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div id="biAnimationContainer" class="w-full h-64"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI and Machine Learning Section -->
+            <section class="mb-16 animate-fade-in">
+                <h2 class="text-3xl font-bold mb-8 text-gradient">AI and Machine Learning</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <canvas id="aiMlChart" width="400" height="300"></canvas>
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-700 mb-4">Harness the power of AI and Machine Learning to drive innovation and efficiency in your business. Our services include:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Custom AI model development</li>
+                            <li>Machine learning algorithm implementation</li>
+                            <li>Natural Language Processing (NLP) solutions</li>
+                            <li>Computer Vision applications</li>
+                            <li>AI-powered process automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="bg-blue-600 text-white py-16 rounded-lg shadow-lg animate-fade-in">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Data Strategy?</h2>
+                    <p class="text-xl mb-8">Let's discuss how Bridges DATA Consultancy can help you leverage the power of data to drive your business forward.</p>
+                    <a href="{% url 'schedule_consultation' %}" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-300 transition duration-300 ease-in-out transform hover:scale-105">
+                        Schedule a Consultation
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Bridges DATA Consultancy</h3>
+                    <p class="text-gray-400">Building bridges to data-driven success.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="{% url 'services' %}" class="text-yellow-300 hover:text-yellow-400">Services</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="{% url 'case_studies' %}" class="text-gray-400 hover:text-white">Case Studies</a></li>
+                        <li><a href="{% url 'blogs' %}" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">carrers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Data Strategy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Data Modernization</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">BI and Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">AI and Machine Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Business Use Case Solutioning</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <p class="text-gray-400 mb-2">123 Data Street, Analytics City, 12345</p>
+                    <p class="text-gray-400 mb-2">Phone: +1 (555) 123-4567</p>
+                    <p class="text-gray-400">Email: info@bridgesdata.com</p>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2023 Bridges DATA Consultancy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Data Strategy Chart
+        var ctx = document.getElementById('dataStrategyChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Data Quality', 'Governance', 'Analytics', 'Integration', 'Security'],
+                datasets: [{
+                    label: 'Current State',
+                    data: [30, 40, 20, 50, 60],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Target State',
+                    data: [80, 90, 85, 95, 90],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+
+        // BI Animation
+        var biAnimationContainer = document.getElementById('biAnimationContainer');
+        var biAnimation = anime({
+            targets: biAnimationContainer,
+            background: ['#ff0000', '#00ff00', '#0000ff'],
+            scale: [1, 1.1, 1],
+            duration: 3000,
+            loop: true,
+            easing: 'easeInOutQuad'
+        });
+
+        // AI and ML Chart
+        var aiMlCtx = document.getElementById('aiMlChart').getContext('2d');
+        var aiMlChart = new Chart(aiMlCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Predictive Analytics', 'Process Automation', 'Customer Insights', 'Risk Management', 'Product Innovation'],
+                datasets: [{
+                    label: 'AI/ML Impact',
+                    data: [85, 70, 90, 75, 80],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(153, 102, 255, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+</html>
