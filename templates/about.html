@@ -1,10 +1,392 @@
-{% extends './base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Bridges DATA Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-{% load static %}
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
 
-{% block content %}
-{% include './navbar.html' %}
+        .gradient-bg {
+            background: linear-gradient(135deg, #0066cc, #00ccff);
+        }
 
+        .text-gradient {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-{% include './footer.html' %}
-{% endblock %}
+        .navbar-item {
+            position: relative;
+        }
+
+        .navbar-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-item:hover::after {
+            width: 100%;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 1s ease-in-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #0066cc;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ffd700;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation bar (same as home page) -->
+    <nav class="gradient-bg shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-white font-bold text-3xl">
+                        Bridges DATA Consultancy
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="{% url 'home' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Home</a>
+                        <a href="{% url 'services' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Services</a>
+                        <a href="{% url 'about' %}" class="navbar-item text-lg font-medium px-3 py-2  text-yellow-300 border-b-2 border-yellow-300">About</a>
+                        <a href="{% url 'contact' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
+                        <a href="{% url 'case_studies' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Case Studies</a>
+                        <a href="{% url 'blogs' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Blog</a>
+                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Carrers</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="text-white hover:text-yellow-300 focus:outline-none focus:text-yellow-300">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl text-white font-bold mb-4 animate-fade-in">About Bridges DATA Consultancy</h1>
+            <p class="text-xl text-yellow-300 animate-fade-in">Empowering businesses with data-driven insights since 2015</p>
+        </div>
+    </header>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Our Story</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 animate-slide-in-left">
+                    <p class="text-lg text-gray-700">
+                        Bridges DATA Consultancy was founded in 2015 with a vision to bridge the gap between complex data and actionable business strategies. Our journey began when a group of passionate data scientists and business analysts came together, recognizing the untapped potential of data in driving business success.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        Since our inception, we've been at the forefront of the data revolution, constantly evolving our methodologies and embracing cutting-edge technologies to provide our clients with unparalleled insights and solutions.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        Today, we're proud to have served over 500 clients across various industries, helping them transform their operations, boost efficiency, and drive growth through smart data utilization.
+                    </p>
+                </div>
+                <div class="relative animate-slide-in-right overflow-hidden rounded-3xl shadow-lg h-80">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 transform -rotate-6 scale-110"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ffd700"/>
+                                    <stop offset="100%" stop-color="#ffaa00"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="2">
+                                <animate attributeName="r" from="45" to="50" dur="2s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" from="1" to="0.5" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#gradient)" stroke-width="2">
+                                <animate attributeName="r" from="35" to="40" dur="2s" repeatCount="indefinite" begin="0.5s" />
+                                <animate attributeName="opacity" from="1" to="0.5" dur="2s" repeatCount="indefinite" begin="0.5s" />
+                            </circle>
+                            <circle cx="50" cy="50" r="25" fill="none" stroke="url(#gradient)" stroke-width="2">
+                                <animate attributeName="r" from="25" to="30" dur="2s" repeatCount="indefinite" begin="1s" />
+                                <animate attributeName="opacity" from="1" to="0.5" dur="2s" repeatCount="indefinite" begin="1s" />
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                        <i class="fas fa-users text-5xl mb-4 animate-bounce"></i>
+                        <h3 class="text-2xl font-bold mb-2">Our Team</h3>
+                        <p class="text-center px-4">Passionate experts dedicated to your data success</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Our Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
+                    <div class="text-3xl text-blue-600 mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Innovation</h3>
+                    <p class="text-gray-600">We constantly push the boundaries of what's possible with data, embracing new technologies and methodologies to deliver cutting-edge solutions.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
+                    <div class="text-3xl text-blue-600 mb-4">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Collaboration</h3>
+                    <p class="text-gray-600">We believe in the power of teamwork, fostering strong partnerships with our clients and working together to achieve shared goals.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
+                    <div class="text-3xl text-blue-600 mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Excellence</h3>
+                    <p class="text-gray-600">We strive for excellence in everything we do, maintaining the highest standards of quality and professionalism in our work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Timeline -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Our Journey</h2>
+            <div class="space-y-8">
+                <div class="timeline-item pb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2015</h3>
+                    <p class="text-gray-600">Bridges DATA Consultancy is founded</p>
+                </div>
+                <div class="timeline-item pb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2017</h3>
+                    <p class="text-gray-600">Expanded our services to include AI and Machine Learning solutions</p>
+                </div>
+                <div class="timeline-item pb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2019</h3>
+                    <p class="text-gray-600">Reached milestone of 250+ satisfied clients</p>
+                </div>
+                <div class="timeline-item pb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2021</h3>
+                    <p class="text-gray-600">Launched our proprietary data analytics platform</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2023</h3>
+                    <p class="text-gray-600">Celebrating our growth to a team of 50+ data experts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Impact Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white">Our Impact</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+                    <p class="text-gray-600">Clients Served</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">50+</div>
+                    <p class="text-gray-600">Data Experts</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">98%</div>
+                    <p class="text-gray-600">Client Satisfaction</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                    <div class="text-4xl font-bold text-blue-600 mb-2">20+</div>
+                    <p class="text-gray-600">Industries Served</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Meet Our Leadership Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                    <img src="https://source.unsplash.com/random/400x400?portrait,man" alt="John Doe" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">John Doe</h3>
+                        <p class="text-gray-600 mb-4">Founder & CEO</p>
+                        <p class="text-gray-700">With over 20 years of experience in data science and business strategy, John leads our company vision and growth.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                    <img src="https://source.unsplash.com/random/400x400?portrait,woman" alt="Jane Smith" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Jane Smith</h3>
+                        <p class="text-gray-600 mb-4">Chief Data Scientist</p>
+                        <p class="text-gray-700">Jane brings cutting-edge AI and machine learning expertise to our projects, driving innovation in our solutions.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
+                    <img src="https://source.unsplash.com/random/400x400?portrait,man,suit" alt="Mike Johnson" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mike Johnson</h3>
+                        <p class="text-gray-600 mb-4">Head of Client Success</p>
+                        <p class="text-gray-700">Mike ensures that our clients receive top-notch support and achieve their data-driven goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-8">Ready to Transform Your Data Strategy?</h2>
+            <p class="text-xl text-yellow-300 mb-12">Let's collaborate to unlock the full potential of your data and drive your business forward.</p>
+            <a href="#" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Schedule a Consultation
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer (same as home page) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Bridges DATA Consultancy</h3>
+                    <p class="text-gray-400">Building bridges to data-driven success.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="{% url 'about' %}" class="text-yellow-300 hover:text-yellow-400">About Us</a></li>
+                        <li><a href="{% url 'case_studies' %}" class="text-gray-400 hover:text-white">Case Studies</a></li>
+                        <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="{% url 'blogs' %}" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">carrers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Data Strategy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Data Modernization</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">BI and Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">AI and Machine Learning</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Business Use Case Solutioning</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Stay updated with our latest insights and news.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="flex-grow px-3 py-2 bg-gray-800 text-white rounded-l-md focus:outline-none">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-r-md transition duration-300 ease-in-out">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2023 Bridges DATA Consultancy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Add any custom JavaScript here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example: Animate the impact numbers
+            const animateValue = (element, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    element.innerHTML = Math.floor(progress * (end - start) + start);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            };
+
+            const impactNumbers = document.querySelectorAll('.bg-white .text-4xl');
+            impactNumbers.forEach((number) => {
+                animateValue(number, 0, parseInt(number.innerText), 2000);
+            });
+        });
+    </script>
+</body>
+</html>

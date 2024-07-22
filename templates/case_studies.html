@@ -45,23 +45,38 @@
             width: 100%;
         }
 
-        .animate-fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        .animate-fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .case-study-card {
             transition: transform 0.3s ease-in-out;
         }
 
         .case-study-card:hover {
             transform: translateY(-10px);
+        }
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
         }
     </style>
 </head>
@@ -79,11 +94,11 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="{% url 'home' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Home</a>
                         <a href="{% url 'services' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Services</a>
-                        <a href="#about" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">About</a>
+                        <a href="{% url 'about' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">About</a>
                         <a href="{% url 'contact' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
                         <a href="{% url 'case_studies' %}" class="navbar-item text-lg font-medium px-3 py-2  text-yellow-300 border-b-2 border-yellow-300">Case Studies</a>
                         <a href="{% url 'blogs' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Blog</a>
-                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Carrers</a>
+                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Careers</a>
                     </div>
                 </div>
             </div>
@@ -91,11 +106,14 @@
     </nav>
 
     <!-- Header -->
-    <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold text-gray-900">
-                Case Studies
-            </h1>
+    <header class="bg-gray-900 text-white parallax" style="background-image: url('https://source.unsplash.com/random/1920x1080?data,analytics');">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <h1 class="text-5xl font-bold mb-4 animate-fade-in-up">Our Success Stories</h1>
+            <p class="text-xl mb-8 animate-fade-in-up" style="animation-delay: 0.2s;">Discover how we've helped businesses transform through data-driven solutions.</p>
+            <a href="#case-studies" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-8 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 animate-fade-in-up" style="animation-delay: 0.4s;">
+                Explore Case Studies
+                <i class="fas fa-chevron-down ml-2"></i>
+            </a>
         </div>
     </header>
 
@@ -103,9 +121,9 @@
     <main>
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <!-- Case Study Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="case-studies">
                 <!-- Case Study 1 -->
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden case-study-card animate-fade-in">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden case-study-card animate-fade-in-up" style="animation-delay: 0.2s;">
                     <img class="w-full h-56 object-cover" src="https://source.unsplash.com/random/800x600?retail" alt="Retail Analytics">
                     <div class="p-6">
                         <h2 class="text-2xl font-bold mb-2">Revolutionizing Retail with Predictive Analytics</h2>
@@ -115,7 +133,7 @@
                 </div>
 
                 <!-- Case Study 2 -->
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden case-study-card animate-fade-in">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden case-study-card animate-fade-in-up" style="animation-delay: 0.4s;">
                     <img class="w-full h-56 object-cover" src="https://source.unsplash.com/random/800x600?finance" alt="Financial Analytics">
                     <div class="p-6">
                         <h2 class="text-2xl font-bold mb-2">AI-Powered Risk Assessment in Finance</h2>
@@ -125,7 +143,7 @@
                 </div>
 
                 <!-- Case Study 3 -->
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden case-study-card animate-fade-in">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden case-study-card animate-fade-in-up" style="animation-delay: 0.6s;">
                     <img class="w-full h-56 object-cover" src="https://source.unsplash.com/random/800x600?healthcare" alt="Healthcare Analytics">
                     <div class="p-6">
                         <h2 class="text-2xl font-bold mb-2">Optimizing Patient Care with Data Analytics</h2>
@@ -136,7 +154,7 @@
             </div>
 
             <!-- Featured Case Study -->
-            <div class="mt-16 bg-white shadow-lg rounded-lg overflow-hidden animate-fade-in">
+            <div class="mt-16 bg-white shadow-lg rounded-lg overflow-hidden animate-slide-in-right">
                 <div class="md:flex">
                     <div class="md:flex-shrink-0">
                         <img class="h-48 w-full object-cover md:w-48" src="https://source.unsplash.com/random/800x600?data" alt="Featured Case Study">
@@ -150,7 +168,7 @@
             </div>
 
             <!-- Case Study Visualization -->
-            <div class="mt-16 bg-white shadow-lg rounded-lg overflow-hidden animate-fade-in">
+            <div class="mt-16 bg-white shadow-lg rounded-lg overflow-hidden animate-fade-in-up">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold mb-4">Impact of Our Solutions</h2>
                     <canvas id="impactChart" width="400" height="200"></canvas>
@@ -158,12 +176,10 @@
             </div>
 
             <!-- Client Testimonial -->
-            <div class="mt-16 bg-white shadow-lg rounded-lg overflow-hidden animate-fade-in">
+            <div class="mt-16 bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="p-6">
                     <h2 class="text-2xl font-bold mb-4">Client Testimonial</h2>
-                    <blockquote class="text-xl italic text-gray-800">
-                        "Bridges DATA Consultancy's innovative approach to data analytics has transformed our business operations. Their insights have been invaluable in driving our growth and staying ahead of the competition."
-                    </blockquote>
+                    <blockquote id="testimonial" class="text-xl italic text-gray-800"></blockquote>
                     <p class="mt-4 font-semibold text-gray-600">- John Doe, CEO of TechInnovate Inc.</p>
                 </div>
             </div>
@@ -183,11 +199,10 @@
                     <ul class="space-y-2">
                         <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Home</a></li>
                         <li><a href="index.html#services" class="text-gray-400 hover:text-white">Services</a></li>
-                        <li><a href="index.html#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="index.html{% url 'about' %}" class="text-gray-400 hover:text-white">About Us</a></li>
                         <li><a href="{% url 'case_studies' %}" class="text-yellow-300 hover:text-yellow-400">Case Studies</a></li>
                         <li><a href="{% url 'blogs' %}" class="text-gray-400 hover:text-white">Blog</a></li>
-                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">carrers</a></li>
-
+                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">Careers</a></li>
                     </ul>
                 </div>
                 <div>
@@ -226,7 +241,7 @@
 
         const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1 });
 
-        document.querySelectorAll('.animate-fade-in').forEach(el => {
+        document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-right').forEach(el => {
             observer.observe(el);
         });
 
@@ -274,7 +289,10 @@
                 },
                 animation: {
                     duration: 2000,
-                    easing: 'easeOutQuart'
+                    easing: 'easeOutQuart',
+                    delay: function(context) {
+                        return context.dataIndex * 300;
+                    }
                 }
             }
         });
@@ -290,6 +308,29 @@
                 chart.update();
             }
         });
+
+        // Testimonial typing effect
+        const testimonial = "Bridges DATA Consultancy's innovative approach to data analytics has transformed our business operations. Their insights have been invaluable in driving our growth and staying ahead of the competition.";
+        let i = 0;
+        const speed = 50; // Typing speed in milliseconds
+
+        function typeWriter() {
+            if (i < testimonial.length) {
+                document.getElementById("testimonial").innerHTML += testimonial.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        // Start the typing effect when the element is in view
+        const testimonialObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                typeWriter();
+                testimonialObserver.unobserve(entries[0].target);
+            }
+        }, { threshold: 0.5 });
+
+        testimonialObserver.observe(document.getElementById("testimonial"));
     </script>
 </body>
 </html>
