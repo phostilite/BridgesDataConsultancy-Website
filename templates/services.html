@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,7 +102,10 @@
             <div class="flex justify-between items-center h-24">
                 <div class="flex items-center">
                     <a href="{% url 'home' %}" class="text-white font-bold text-3xl">
-                        Bridges DATA Consultancy
+                        <div style="display: flex; align-items: center;">
+                            <img src="{% static 'logo/bridgesdata-logo.png' %}" style="width: 150px; height: auto;">
+                            <span>Bridges DATA</span>
+                        </div>
                     </a>
                 </div>
                 <div class="hidden md:block">
@@ -172,7 +176,7 @@
             </section>
 
             <!-- Data Strategy Section -->
-            <section class="mb-16 animate-fade-in">
+            <section class="mb-16 animate-fade-in" id="data-strategy">
                 <h2 class="text-3xl font-bold mb-8 text-gradient">Data Strategy</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
@@ -192,7 +196,7 @@
             </section>
 
             <!-- Data Modernization Section -->
-            <section class="mb-16 animate-fade-in">
+            <section class="mb-16 animate-fade-in" id="data-modernization">
                 <h2 class="text-3xl font-bold mb-8 text-gradient">Data Modernization</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div class="bg-white rounded-lg shadow-lg p-6">
@@ -212,7 +216,7 @@
             </section>
 
             <!-- BI and Analytics Section -->
-            <section class="mb-16 animate-fade-in">
+            <section class="mb-16 animate-fade-in" id="bi-and-analytics">
                 <h2 class="text-3xl font-bold mb-8 text-gradient">BI and Analytics</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div>
@@ -232,7 +236,7 @@
             </section>
 
             <!-- AI and Machine Learning Section -->
-            <section class="mb-16 animate-fade-in">
+            <section class="mb-16 animate-fade-in" id="ai-and-machine-learning">
                 <h2 class="text-3xl font-bold mb-8 text-gradient">AI and Machine Learning</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div class="bg-white rounded-lg shadow-lg p-6">
@@ -286,11 +290,10 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Services</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Data Strategy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Data Modernization</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">BI and Analytics</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">AI and Machine Learning</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Business Use Case Solutioning</a></li>
+                        <li><a href="{% url 'services' %}#data-strategy" class="text-gray-400 hover:text-white">Data Strategy</a></li>
+                        <li><a href="{% url 'services' %}#data-modernization" class="text-gray-400 hover:text-white">Data Modernization</a></li>
+                        <li><a href="{% url 'services' %}#bi-and-analytics" class="text-gray-400 hover:text-white">BI and Analytics</a></li>
+                        <li><a href="{% url 'services' %}#ai-and-machine-learning" class="text-gray-400 hover:text-white">AI and Machine Learning</a></li>
                     </ul>
                 </div>
                 <div>
@@ -428,5 +431,21 @@ anime.timeline({loop: false})
   });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if there's a hash in the URL
+            if (window.location.hash) {
+                // Get the target element
+                var targetElement = document.querySelector(window.location.hash);
+                
+                if (targetElement) {
+                    // Scroll to the target element
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
