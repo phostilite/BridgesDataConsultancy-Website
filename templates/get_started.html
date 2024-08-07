@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Started - Bridges DATA Consultancy</title>
+    <title>Get Started - Bridges DATA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -73,9 +73,6 @@
                         <a href="{% url 'services' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Services</a>
                         <a href="{% url 'about' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">About</a>
                         <a href="{% url 'contact' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
-                        {% comment %} <a href="{% url 'case_studies' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Case Studies</a>
-                        <a href="{% url 'blogs' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Blogs</a>
-                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Careers</a> {% endcomment %}
                     </div>
                 </div>
             </div>
@@ -83,30 +80,46 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up">Get Started with Bridges DATA Consultancy</h1>
+        <h1 class="text-4xl font-bold text-center mb-12 text-gradient animate-fade-in-up">Get Started with Bridges DATA</h1>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up card-hover" style="animation-delay: 0.2s;">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Schedule a Consultation</h2>
-                <p class="text-gray-600 mb-6">Speak with our data experts to discuss your unique challenges and goals.</p>
-                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                    Book Now
-                    <i class="fas fa-calendar-check ml-2"></i>
+            <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up card-hover flex flex-col justify-between" style="animation-delay: 0.2s;">
+                <div>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Get in Touch</h2>
+                    <p class="text-gray-600 mb-4">Speak with our data experts to discuss your unique challenges and goals. We're here to help you transform your data strategy.</p>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li><i class="fas fa-phone text-blue-500 mr-2"></i>Call us: +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope text-blue-500 mr-2"></i>Email: info@bridgesdata.com</li>
+                        <li><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>Visit: 123 Data Street, Tech City, 12345</li>
+                    </ul>
+                </div>
+                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 text-center">
+                    Contact Us
+                    <i class="fas fa-envelope ml-2"></i>
                 </a>
             </div>
-            <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up card-hover" style="animation-delay: 0.4s;">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Request a Demo</h2>
-                <p class="text-gray-600 mb-6">See our data solutions in action with a personalized demo tailored to your industry.</p>
-                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                    Get Demo
-                    <i class="fas fa-tv ml-2"></i>
+            <div class="bg-white rounded-xl shadow-lg p-8 animate-fade-in-up card-hover flex flex-col justify-between" style="animation-delay: 0.4s;">
+                <div>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Why Choose Bridges DATA?</h2>
+                    <ul class="text-gray-600 mb-6 space-y-2">
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Expert team with years of industry experience</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Tailored solutions to meet your specific needs</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Cutting-edge technology and methodologies</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Proven track record of successful implementations</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Ongoing support and maintenance</li>
+                        <li><i class="fas fa-check-circle text-blue-500 mr-2"></i>Flexible engagement models</li>
+                    </ul>
+                </div>
+                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105 text-center">
+                    Learn More
+                    <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
         </div>
 
         <div class="bg-white rounded-xl shadow-lg p-8 mb-16 animate-fade-in-up" style="animation-delay: 0.6s;">
             <h2 class="text-2xl font-semibold text-gray-800 mb-6">Our Process</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center">
                     <div class="text-4xl text-blue-600 mb-4 animate-float" style="animation-delay: 0.2s;">
                         <i class="fas fa-lightbulb"></i>
@@ -184,7 +197,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Bridges DATA Consultancy</h3>
+                    <h3 class="text-2xl font-bold mb-4">Bridges DATA</h3>
                     <p class="text-gray-400">Building bridges to data-driven success.</p>
                 </div>
                 <div>
@@ -193,10 +206,7 @@
                         <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Home</a></li>
                         <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white">Services</a></li>
                         <li><a href="{% url 'about' %}" class="text-gray-400 hover:text-white">About Us</a></li>
-                        {% comment %} <li><a href="{% url 'case_studies' %}" class="text-gray-400 hover:text-white">Case Studies</a></li> {% endcomment %}
                         <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-white">Contact</a></li>
-                        {% comment %} <li><a href="{% url 'blogs' %}" class="text-gray-400 hover:text-white">Blogs</a></li>
-                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">Careers</a></li> {% endcomment %}
                     </ul>
                 </div>
                 <div>
