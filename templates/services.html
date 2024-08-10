@@ -83,6 +83,7 @@
         .service-card:hover .service-icon {
             transform: scale(1.1);
         }
+
         .animate-title span {
             opacity: 0;
             transform: translateY(20px);
@@ -114,9 +115,6 @@
                         <a href="{% url 'services' %}" class="navbar-item text-lg font-medium px-3 py-2  text-yellow-300 border-b-2 border-yellow-300">Services</a>
                         <a href="{% url 'about' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">About</a>
                         <a href="{% url 'contact' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
-                        {% comment %} <a href="{% url 'case_studies' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Case Studies</a>
-                        <a href="{% url 'blogs' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Blogs</a>
-                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Careers</a> {% endcomment %}
                     </div>
                 </div>
             </div>
@@ -138,42 +136,53 @@
     <main>
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <!-- Services Overview -->
-            <section class="mb-16 animate-fade-in">
+            <section class="mb-16 animate-fade-in relative">
                 <h2 class="text-3xl font-bold mb-8 text-gradient">Comprehensive Data Solutions</h2>
                 <p class="text-xl text-gray-700 mb-8">At Bridges DATA Consultancy, we offer a wide range of services to help your business harness the power of data. Our expert team uses cutting-edge technologies and methodologies to deliver tailored solutions that drive growth, efficiency, and innovation.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6 relative" data-service="data-strategy">
                         <i class="fas fa-chart-line text-4xl text-blue-500 mb-4 service-icon"></i>
                         <h3 class="text-xl font-bold mb-2">Data Strategy</h3>
                         <p class="text-gray-600">Develop a comprehensive data strategy aligned with your business goals.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6 relative" data-service="data-modernization">
                         <i class="fas fa-server text-4xl text-green-500 mb-4 service-icon"></i>
                         <h3 class="text-xl font-bold mb-2">Data Modernization</h3>
                         <p class="text-gray-600">Upgrade your data infrastructure for improved performance and scalability.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6 relative" data-service="bi-analytics">
                         <i class="fas fa-chart-bar text-4xl text-purple-500 mb-4 service-icon"></i>
                         <h3 class="text-xl font-bold mb-2">BI and Analytics</h3>
                         <p class="text-gray-600">Transform raw data into actionable insights with advanced analytics tools.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6 relative" data-service="ai-ml">
                         <i class="fas fa-robot text-4xl text-red-500 mb-4 service-icon"></i>
                         <h3 class="text-xl font-bold mb-2">AI and Machine Learning</h3>
                         <p class="text-gray-600">Leverage AI and ML to automate processes and predict future trends.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6 relative" data-service="use-case-solutioning">
                         <i class="fas fa-lightbulb text-4xl text-yellow-500 mb-4 service-icon"></i>
                         <h3 class="text-xl font-bold mb-2">Business Use Case Solutioning</h3>
                         <p class="text-gray-600">Develop custom solutions for your unique business challenges.</p>
                     </div>
-                    <div class="service-card bg-white rounded-lg shadow-lg p-6">
+                    <div class="service-card bg-white rounded-lg shadow-lg p-6 relative" data-service="data-governance">
                         <i class="fas fa-shield-alt text-4xl text-indigo-500 mb-4 service-icon"></i>
                         <h3 class="text-xl font-bold mb-2">Data Governance & Security</h3>
                         <p class="text-gray-600">Implement robust data governance and security measures.</p>
                     </div>
                 </div>
             </section>
+
+            <!-- Service Info Dialogs -->
+            <div id="serviceInfoDialog" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-lg shadow-xl p-8 max-w-md mx-4 relative transform scale-0 transition-transform duration-300">
+                    <button id="closeDialog" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <h3 id="dialogTitle" class="text-2xl font-bold mb-4"></h3>
+                    <p id="dialogContent" class="text-gray-700"></p>
+                </div>
+            </div>
 
             <!-- Data Strategy Section -->
             <section class="mb-16 animate-fade-in" id="data-strategy">
@@ -255,13 +264,54 @@
                 </div>
             </section>
 
+            <!-- Business Use Case Solutioning Section -->
+            <section class="mb-16 animate-fade-in" id="business-use-case-solutioning">
+                <h2 class="text-3xl font-bold mb-8 text-gradient">Business Use Case Solutioning</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-lg text-gray-700 mb-4">We collaborate with you to identify and solve critical business challenges using data-driven approaches. Our process includes:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Problem identification and scoping</li>
+                            <li>Data-driven solution design</li>
+                            <li>Proof of concept development</li>
+                            <li>Solution implementation and integration</li>
+                            <li>Continuous improvement and optimization</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div id="useCaseSolutioningAnimation" class="w-full h-64"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Governance & Security Section -->
+            <section class="mb-16 animate-fade-in" id="data-governance-security">
+                <h2 class="text-3xl font-bold mb-8 text-gradient">Data Governance & Security</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <canvas id="dataGovernanceChart" width="400" height="300"></canvas>
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-700 mb-4">Ensure the integrity, security, and compliance of your data with our comprehensive data governance and security services:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li>Data governance framework development</li>
+                            <li>Data quality management</li>
+                            <li>Data privacy and compliance (GDPR, CCPA, etc.)</li>
+                            <li>Data security risk assessment and mitigation</li>
+                            <li>Data access control and monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
             <!-- CTA Section -->
             <section class="bg-blue-600 text-white py-16 rounded-lg shadow-lg animate-fade-in">
                 <div class="max-w-3xl mx-auto text-center">
-                    <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Data Strategy?</h2>
-                    <p class="text-xl mb-8">Let's discuss how Bridges DATA Consultancy can help you leverage the power of data to drive your business forward.</p>
-                    <a href="{% url 'schedule_consultation' %}" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-300 transition duration-300 ease-in-out transform hover:scale-105">
-                        Schedule a Consultation
+                    <h2 class="text-3xl font-bold mb-4">Embark on Your Data-Driven Transformation</h2>
+                    <p class="text-xl mb-8">Discover how Bridges DATA Consultancy can revolutionize your business with cutting-edge data solutions.</p>
+                    <a href="{% url 'schedule_consultation' %}" class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-6 rounded-full text-lg transition duration-300 ease-in-out transform hover:scale-105 animate-fade-in-up" style="animation-delay: 1.8s;">
+                        Unlock Your Data Journey
+                        <i class="fas fa-key ml-2"></i>
                     </a>
                 </div>
             </section>
@@ -282,10 +332,7 @@
                         <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Home</a></li>
                         <li><a href="{% url 'services' %}" class="text-yellow-300 hover:text-yellow-400">Services</a></li>
                         <li><a href="{% url 'about' %}" class="text-gray-400 hover:text-white">About Us</a></li>
-                        {% comment %} <li><a href="{% url 'case_studies' %}" class="text-gray-400 hover:text-white">Case Studies</a></li> {% endcomment %}
                         <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-white">Contact</a></li>
-                        {% comment %} <li><a href="{% url 'blogs' %}" class="text-gray-400 hover:text-white">Blogs</a></li>
-                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">Careers</a></li> {% endcomment %}
                     </ul>
                 </div>
                 <div>
@@ -295,6 +342,8 @@
                         <li><a href="{% url 'services' %}#data-modernization" class="text-gray-400 hover:text-white">Data Modernization</a></li>
                         <li><a href="{% url 'services' %}#bi-and-analytics" class="text-gray-400 hover:text-white">BI and Analytics</a></li>
                         <li><a href="{% url 'services' %}#ai-and-machine-learning" class="text-gray-400 hover:text-white">AI and Machine Learning</a></li>
+                        <li><a href="{% url 'services' %}#business-use-case-solutioning" class="text-gray-400 hover:text-white">Business Use Case Solutioning</a></li>
+                        <li><a href="{% url 'services' %}#data-governance-security" class="text-gray-400 hover:text-white">Data Governance</a></li>
                     </ul>
                 </div>
                 <div>
@@ -411,28 +460,25 @@
                 }
             }
         });
-    </script>
-    <script>
+
         // Animate the "Our Services" title
-anime.timeline({loop: false})
-  .add({
-    targets: '.animate-title span',
-    translateY: [20, 0],
-    opacity: [0, 1],
-    easing: "easeOutExpo",
-    duration: 1200,
-    delay: (el, i) => 300 + 100 * i
-  }).add({
-    targets: '.animate-subtitle',
-    translateY: [20, 0],
-    opacity: [0, 1],
-    easing: "easeOutExpo",
-    duration: 1000,
-    offset: '-=1000'
-  });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script>
+        anime.timeline({loop: false})
+          .add({
+            targets: '.animate-title span',
+            translateY: [20, 0],
+            opacity: [0, 1],
+            easing: "easeOutExpo",
+            duration: 1200,
+            delay: (el, i) => 300 + 100 * i
+          }).add({
+            targets: '.animate-subtitle',
+            translateY: [20, 0],
+            opacity: [0, 1],
+            easing: "easeOutExpo",
+            duration: 1000,
+            offset: '-=1000'
+          });
+
         document.addEventListener('DOMContentLoaded', function() {
             // Check if there's a hash in the URL
             if (window.location.hash) {
@@ -448,5 +494,6 @@ anime.timeline({loop: false})
             }
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </body>
 </html>
