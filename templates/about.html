@@ -71,35 +71,35 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
         }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #0066cc;
+        
+        .animate-blob {
+            animation: blob 7s infinite;
         }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: -4px;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #ffd700;
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
         }
     </style>
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation bar (same as home page) -->
     <nav class="gradient-bg shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
@@ -117,9 +117,6 @@
                         <a href="{% url 'services' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Services</a>
                         <a href="{% url 'about' %}" class="navbar-item text-lg font-medium px-3 py-2  text-yellow-300 border-b-2 border-yellow-300">About</a>
                         <a href="{% url 'contact' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Contact</a>
-                        {% comment %} <a href="{% url 'case_studies' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Case Studies</a>
-                        <a href="{% url 'blogs' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Blog</a>
-                        <a href="{% url 'carrers' %}" class="navbar-item text-white hover:text-yellow-300 px-3 py-2 rounded-md text-lg font-medium">Careers</a> {% endcomment %}
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -133,7 +130,6 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
     <header class="gradient-bg py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-5xl text-white font-bold mb-4 animate-fade-in">About Bridges DATA Consultancy</h1>
@@ -141,172 +137,99 @@
         </div>
     </header>
 
-    <!-- Our Story Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Our Story</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6 animate-slide-in-left">
-                    <p class="text-lg text-gray-700">
-                        Bridges DATA Consultancy was founded in 2015 with a vision to bridge the gap between complex data and actionable business strategies. Our journey began when a group of passionate data scientists and business analysts came together, recognizing the untapped potential of data in driving business success.
-                    </p>
-                    <p class="text-lg text-gray-700">
-                        Since our inception, we've been at the forefront of the data revolution, constantly evolving our methodologies and embracing cutting-edge technologies to provide our clients with unparalleled insights and solutions.
-                    </p>
-                    <p class="text-lg text-gray-700">
-                        Today, we're proud to have served over 500 clients across various industries, helping them transform their operations, boost efficiency, and drive growth through smart data utilization.
-                    </p>
-                </div>
-                <div class="relative animate-slide-in-right overflow-hidden rounded-3xl shadow-lg h-80">
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 transform -rotate-6 scale-110"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <svg class="w-full h-full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffd700"/>
-                                    <stop offset="100%" stop-color="#ffaa00"/>
-                                </linearGradient>
-                            </defs>
-                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="2">
-                                <animate attributeName="r" from="45" to="50" dur="2s" repeatCount="indefinite" />
-                                <animate attributeName="opacity" from="1" to="0.5" dur="2s" repeatCount="indefinite" />
-                            </circle>
-                            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#gradient)" stroke-width="2">
-                                <animate attributeName="r" from="35" to="40" dur="2s" repeatCount="indefinite" begin="0.5s" />
-                                <animate attributeName="opacity" from="1" to="0.5" dur="2s" repeatCount="indefinite" begin="0.5s" />
-                            </circle>
-                            <circle cx="50" cy="50" r="25" fill="none" stroke="url(#gradient)" stroke-width="2">
-                                <animate attributeName="r" from="25" to="30" dur="2s" repeatCount="indefinite" begin="1s" />
-                                <animate attributeName="opacity" from="1" to="0.5" dur="2s" repeatCount="indefinite" begin="1s" />
-                            </circle>
-                        </svg>
+            <h2 class="text-5xl font-bold text-center mb-16 text-gradient">Our Story</h2>
+            <div class="relative">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                <div class="absolute -bottom-8 left-20 w-64 h-64 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+                
+                <div class="relative grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Bridges Data Consultancy was founded with a vision to bridge the gap between complex data and actionable business strategies. Our journey began when a group of passionate data scientists and business analysts came together, recognizing the untapped potential of data in driving business success.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Since our inception, we've been at the forefront of the data revolution, constantly evolving our methodologies and embracing cutting-edge technologies to provide our clients with unparalleled insights and solutions.
+                        </p>
+                        <p class="text-lg text-gray-700 leading-relaxed">
+                            Our commitment to innovation and excellence has propelled us to become a trusted partner for businesses looking to harness the power of data.
+                        </p>
                     </div>
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
-                        <i class="fas fa-users text-5xl mb-4 animate-bounce"></i>
-                        <h3 class="text-2xl font-bold mb-2">Our Team</h3>
-                        <p class="text-center px-4">Passionate experts dedicated to your data success</p>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 transform -rotate-6 rounded-3xl"></div>
+                        <div class="relative bg-white p-8 rounded-3xl shadow-xl">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h3>
+                            <p class="text-gray-600 mb-6">
+                                To empower organizations with the tools and knowledge they need to thrive in today's data-driven world.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>Develop comprehensive data strategies</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>Modernize data infrastructures</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>Transform raw data into valuable assets</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="mt-16 text-center">
+                <p class="text-xl text-gray-600 italic">"At Bridges Data Consultancy, we believe that data is more than just numbers; it's the key to unlocking new opportunities and achieving business goals."</p>
             </div>
         </div>
     </section>
 
-    <!-- Our Values Section -->
-    <section class="py-20 bg-gray-100">
+    <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Our Values</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 class="text-5xl font-bold text-center mb-16 text-gradient">Our Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
                     <div class="text-3xl text-blue-600 mb-4">
-                        <i class="fas fa-lightbulb"></i>
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Innovation</h3>
                     <p class="text-gray-600">We constantly push the boundaries of what's possible with data, embracing new technologies and methodologies to deliver cutting-edge solutions.</p>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
                     <div class="text-3xl text-blue-600 mb-4">
-                        <i class="fas fa-handshake"></i>
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Collaboration</h3>
                     <p class="text-gray-600">We believe in the power of teamwork, fostering strong partnerships with our clients and working together to achieve shared goals.</p>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
                     <div class="text-3xl text-blue-600 mb-4">
-                        <i class="fas fa-chart-line"></i>
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Integrity</h3>
+                    <p class="text-gray-600">We uphold the highest standards of integrity in everything we do. Our clients trust us to handle their data with the utmost care and confidentiality, and we take that responsibility seriously.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
+                    <div class="text-3xl text-blue-600 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Excellence</h3>
                     <p class="text-gray-600">We strive for excellence in everything we do, maintaining the highest standards of quality and professionalism in our work.</p>
                 </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 transform transition duration-500 hover:scale-105">
+                    <div class="text-3xl text-blue-600 mb-4">
+                        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Customer-Centricity</h3>
+                    <p class="text-gray-600">Our clients are at the heart of everything we do. We are committed to understanding their needs, anticipating their challenges, and providing solutions that drive their success.</p>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Our Journey Timeline -->
-    {% comment %} <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Our Journey</h2>
-            <div class="space-y-8">
-                <div class="timeline-item pb-8">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2015</h3>
-                    <p class="text-gray-600">Bridges DATA Consultancy is founded</p>
-                </div>
-                <div class="timeline-item pb-8">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2018</h3>
-                    <p class="text-gray-600">Expanded our services to include AI and Machine Learning solutions</p>
-                </div>
-                <div class="timeline-item pb-8">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2020</h3>
-                    <p class="text-gray-600">Reached milestone of 250+ satisfied clients</p>
-                </div>
-                <div class="timeline-item pb-8">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2022</h3>
-                    <p class="text-gray-600">Launched our proprietary data analytics platform</p>
-                </div>
-                <div class="timeline-item">
-                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">2024</h3>
-                    <p class="text-gray-600">Celebrating our growth to a team of 50+ data experts</p>
-                </div>
-            </div>
-        </div>
-    </section> {% endcomment %}
-
-    <!-- Our Impact Section -->
-    {% comment %} <section class="py-20 gradient-bg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-white">Our Impact</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
-                    <p class="text-gray-600">Clients Served</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">50+</div>
-                    <p class="text-gray-600">Data Experts</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">98%</div>
-                    <p class="text-gray-600">Client Satisfaction</p>
-                </div>
-                <div class="bg-white rounded-xl shadow-lg p-6 text-center">
-                    <div class="text-4xl font-bold text-blue-600 mb-2">20+</div>
-                    <p class="text-gray-600">Industries Served</p>
-                </div>
-            </div>
-        </div>
-    </section> {% endcomment %}
-
-    <!-- Meet Our Team Section -->
-    {% comment %} <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gradient">Meet Our Leadership Team</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
-                    <img src="https://source.unsplash.com/random/400x400?portrait,man" alt="John Doe" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">John Doe</h3>
-                        <p class="text-gray-600 mb-4">Founder & CEO</p>
-                        <p class="text-gray-700">With over 20 years of experience in data science and business strategy, John leads our company vision and growth.</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
-                    <img src="https://source.unsplash.com/random/400x400?portrait,woman" alt="Jane Smith" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Jane Smith</h3>
-                        <p class="text-gray-600 mb-4">Chief Data Scientist</p>
-                        <p class="text-gray-700">Jane brings cutting-edge AI and machine learning expertise to our projects, driving innovation in our solutions.</p>
-                    </div>
-                </div>
-                <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105">
-                    <img src="https://source.unsplash.com/random/400x400?portrait,man,suit" alt="Mike Johnson" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mike Johnson</h3>
-                        <p class="text-gray-600 mb-4">Head of Client Success</p>
-                        <p class="text-gray-700">Mike ensures that our clients receive top-notch support and achieve their data-driven goals.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> {% endcomment %}
 
     <section class="py-20 gradient-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -319,7 +242,6 @@
         </div>
     </section>
 
-    <!-- Footer (same as home page) -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -333,10 +255,7 @@
                         <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white">Home</a></li>
                         <li><a href="{% url 'services' %}" class="text-gray-400 hover:text-white">Services</a></li>
                         <li><a href="{% url 'about' %}" class="text-yellow-300 hover:text-yellow-400">About Us</a></li>
-                        {% comment %} <li><a href="{% url 'case_studies' %}" class="text-gray-400 hover:text-white">Case Studies</a></li> {% endcomment %}
                         <li><a href="{% url 'contact' %}" class="text-gray-400 hover:text-white">Contact</a></li>
-                        {% comment %} <li><a href="{% url 'blogs' %}" class="text-gray-400 hover:text-white">Blog</a></li>
-                        <li><a href="{% url 'carrers' %}" class="text-gray-400 hover:text-white">Careers</a></li> {% endcomment %}
                     </ul>
                 </div>
                 <div>
@@ -370,9 +289,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Add any custom JavaScript here
         document.addEventListener('DOMContentLoaded', function() {
-            // Example: Animate the impact numbers
             const animateValue = (element, start, end, duration) => {
                 let startTimestamp = null;
                 const step = (timestamp) => {
